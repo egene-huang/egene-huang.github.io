@@ -3,7 +3,7 @@
 <a id="more"></a>
 <p>所以我就在git仓库根目录下新建了<code>.gitignore</code> 结果，没有生效，因为这些文件之前已经被git追踪了，网上一顿找，需要先告诉git取消这些文件的追踪 ， 需要运行这行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm --cached public/</div></pre></td></tr></table></figure></p>
 <p>使用这种方式是无法达到目的的，会提示:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: not removing <span class="string">'public/'</span> recursively without -r</div></pre></td></tr></table></figure></p>
-<p>需要使用参数<code>-r</code> 来递归删除目录，否则只能删除文件，所以取消git版本的命令应该是这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm -r --cached public/</div></pre></td></tr></table></figure></p>
+<p>需要使用参数<code>-r</code> 来递归删除目录，否则只能删除文件，所以取消git版本的命令应该是这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm -r --cached public</div></pre></td></tr></table></figure></p>
 <p>然后就可以看到很多文件从版本中删除了。 </p>
 <p>可笑，我之前还想着从github仓库中删除这些文件，然后本地<code>git pull</code> 就能达到目的，我真是凹凸了。。。</p>
 <p>慢慢折腾，加油！！！！</p>
