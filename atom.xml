@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-15T14:47:38.562Z</updated>
+  <updated>2016-11-15T14:53:05.095Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/15/remove-tracked-file/"/>
     <id>http://yoursite.com/2016/11/15/remove-tracked-file/</id>
     <published>2016-11-15T14:25:29.000Z</published>
-    <updated>2016-11-15T14:47:38.562Z</updated>
+    <updated>2016-11-15T14:53:05.095Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 <em>github</em> 上，结果就导致了 <code>/public/</code> 、<code>/node_modules/</code>、<code>db.json</code>等这些文件/夹也推动到github上了, 一直只是<code>听说git/github</code> 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个<code>.gitignore</code>文件可以做到忽略指定文件/夹， 让我们<code>git status</code> 不会罗列被忽略的文件。</p>
@@ -31,6 +31,7 @@
 <p>然后就可以看到很多文件从版本中删除了。 </p>
 <p>可笑，我之前还想着从github仓库中删除这些文件，然后本地<code>git pull</code> 就能达到目的，我真是凹凸了。。。</p>
 <p>慢慢折腾，加油！！！！</p>
+<p>参考链接:<br><a href="https://segmentfault.com/q/1010000000430426" target="_blank" rel="external">segmentfault#n͛i͛g͛h͛t͛i͛r͛e͛</a></p>
 ]]></content>
     
     <summary type="html">
