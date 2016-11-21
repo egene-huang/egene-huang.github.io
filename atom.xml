@@ -1,29 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>palm.strive&#39;blog</title>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2016-11-15T15:41:03.552Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://egene-huang.github.io/"/>
+  <updated>2016-11-21T13:15:39.142Z</updated>
+  <id>https://egene-huang.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>egene-huang</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用.gitignore文件，取消某些文件版本控制</title>
-    <link href="http://yoursite.com/2016/11/15/remove-tracked-file/"/>
-    <id>http://yoursite.com/2016/11/15/remove-tracked-file/</id>
-    <published>2016-11-15T14:25:29.000Z</published>
-    <updated>2016-11-15T15:41:03.552Z</updated>
+    <title>初次学习mongodb</title>
+    <link href="https://egene-huang.github.io/2016/11/21/mongodb/"/>
+    <id>https://egene-huang.github.io/2016/11/21/mongodb/</id>
+    <published>2016-11-21T06:22:04.000Z</published>
+    <updated>2016-11-21T13:15:39.142Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h2><p>学习node快接近尾声了, 想使用express+ejs+mongoDB 完成一个小栗子, 算是我学习node的一个结业考试.  不过,之前从来没有接触过mongodb,对我这小小白来说, 安装-启动mongodb都异常的艰难,  想想真是 …  铁窗呀 ~~  铁门 ~  铁锁链 ~~~  路过的你们请尽情嘲笑吧 ,  我不怕!!!!</p>
+<a id="more"></a>
+<p>在mongodb官网的<a href="https://docs.mongodb.com/manual/administration/install-on-linux/" target="_blank" rel="external">安装指南</a> 上没有找到 <code>ArchLinux</code>版本的安装包, 所以通过下载安装包解压使用是不太可能了, 只能自己下载源码编译安装或者看看<code>Arch</code> 官方仓库或<a href="https://wiki.archlinux.org/index.php/Arch_User_Repository" target="_blank" rel="external"><code>AUR</code></a>仓库有没有了, 不过丰富的软件支持在<code>Arch</code>里从来不是问题,! <code>Arch</code>官方仓库有, <code>AUR</code>仓库也有.  如:</p>
+<p><strong> pacman</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[palm@arch]: ~/myapps/node-web-learn&gt;$ sudo pacman -Ss MongoDB</div><div class="line">[sudo] password <span class="keyword">for</span> palm: </div><div class="line">community/libmongoc 1.4.2-1</div><div class="line">    A client library written <span class="keyword">in</span> C <span class="keyword">for</span> MongoDB</div><div class="line">community/mongodb 3.2.10-2</div><div class="line">    A high-performance, open <span class="built_in">source</span>, schema-free document-oriented database</div><div class="line">community/mongodb-tools 3.2.5-1</div><div class="line">    The MongoDB tools provide import, <span class="built_in">export</span>, and diagnostic capabilities.</div><div class="line">community/php-mongodb 1.1.9-1</div><div class="line">    MongoDB driver <span class="keyword">for</span> PHP</div><div class="line">community/python-pymongo 3.3.1-1</div><div class="line">    Python module <span class="keyword">for</span> using MongoDB</div><div class="line">community/python2-pymongo 3.3.1-1</div><div class="line">    Python module <span class="keyword">for</span> using MongoDB</div></pre></td></tr></table></figure></p>
+<p><strong> AUR </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">[palm@arch]: ~/myapps/node-web-learn&gt;$ yaourt -Ss MongoDB</div><div class="line">community/libmongoc 1.4.2-1</div><div class="line">    A client library written <span class="keyword">in</span> C <span class="keyword">for</span> MongoDB</div><div class="line">community/mongodb 3.2.10-2</div><div class="line">    A high-performance, open <span class="built_in">source</span>, schema-free document-oriented database</div><div class="line">community/mongodb-tools 3.2.5-1</div><div class="line">    The MongoDB tools provide import, <span class="built_in">export</span>, and diagnostic capabilities.</div><div class="line">community/php-mongodb 1.1.9-1</div><div class="line">    MongoDB driver <span class="keyword">for</span> PHP</div><div class="line">community/python-pymongo 3.3.1-1</div><div class="line">    Python module <span class="keyword">for</span> using MongoDB</div><div class="line">community/python2-pymongo 3.3.1-1</div><div class="line">    Python module <span class="keyword">for</span> using MongoDB</div><div class="line">aur/adminer-git 4.2.5.r0.g53dfafd-1 (2) (0.01)</div><div class="line">    a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpM<span class="keyword">in</span>Admin.</div><div class="line">aur/cube-git 20140730-1 (0) (0.00)</div><div class="line">    A system <span class="keyword">for</span> analyzing time series data using MongoDB and Node</div><div class="line">aur/fluent-plugin-mongo 0.7.7-1 (0) (0.00)</div><div class="line">    MongoDB plugin <span class="keyword">for</span> Fluent event collector</div><div class="line">aur/graylog 2.1.2-2 (3) (0.00)</div><div class="line">    Graylog is an open <span class="built_in">source</span> syslog implementation that stores your logs <span class="keyword">in</span> ElasticSearch and MongoDB</div><div class="line">aur/libmongo-client 0.1.8-1 (0) (0.00)</div><div class="line">    Alternative C driver <span class="keyword">for</span> MongoDB (obsolete)</div><div class="line">aur/mongo-cxx-driver r3.0.0-1 (Out of Date) (5) (1.24)</div><div class="line">    The official MongoDB C++ driver library</div><div class="line">aur/mongo-cxx-driver-legacy 1.1.2-1 (6) (0.00)</div><div class="line">    Official MongoDB C++ driver (legacy).</div><div class="line">aur/mongo-cxx-driver-legacy-0.0-26compat 2.6.12-1 (6) (0.00)</div><div class="line">    Official MongoDB C++ driver (26compat).</div><div class="line">aur/mongo_fdw 4.0.0-2 (1) (0.00)</div><div class="line">    PostgreSQL foreign data wrapper <span class="keyword">for</span> MongoDB</div><div class="line">aur/mongobooster 3.0.3-1 (Out of Date) (3) (0.87)</div><div class="line">    The Smartest MongoDB Admin GUI</div><div class="line">aur/mongoclient 1.3.0-1 (1) (0.09)</div><div class="line">    MongoDB administration client</div><div class="line">aur/perl-bson 0.11-1 (1) (0.00)</div><div class="line">    Pure Perl implementation of MongoDB<span class="string">'s BSON serialization</span></div><div class="line">aur/perl-mojolicious-plugin-mongodb 1.16-1 (0) (0.00)</div><div class="line">    Use MongoDB in Mojolicious</div><div class="line">aur/perl-mongodb 1.2.3-1 (3) (0.00)</div><div class="line">    Official MongoDB Driver for Perl</div><div class="line">aur/perl-mongodbx-autoderef 1.110560-1 (0) (0.00)</div><div class="line">    Automagically dereference MongoDB DBRefs lazily</div><div class="line">aur/php53-mongo 1.5.8-1 (1) (0.00)</div><div class="line">    Officially supported PHP 5.3 driver for MongoDB</div><div class="line">aur/python-flask-pymongo 0.4.0-1 (1) (0.00)</div><div class="line">    Flask-PyMongo bridges Flask and PyMongo, so that you can use Flask’s normal mechanisms to configure and connect to MongoDB.</div><div class="line">aur/python-monary-hg 0.3.0.r69.efc4072b9b7f-1 (1) (0.00)</div><div class="line">    Perform high-performance column queries from MongoDB for Python 3. 10x speedup over pymongo alone.</div><div class="line">aur/python-mongoengine 0.10.6-2 (0) (0.00)</div><div class="line">    An object-document mapper for MongoDB.</div><div class="line">aur/python2-dex 0.5.5-1 (0) (0.00)</div><div class="line">    A MongoDB performance tuning tool that compares queries to the available indexes in the queried collection(s) and generates index suggestions based on simple heuristics.</div><div class="line">aur/python2-flask-pymongo 0.4.0-1 (1) (0.00)</div><div class="line">    Flask-PyMongo bridges Flask and PyMongo, so that you can use Flask’s normal mechanisms to configure and connect to MongoDB.</div><div class="line">aur/python2-monary-hg 0.3.0.r69.efc4072b9b7f-1 (1) (0.00)</div><div class="line">    Perform high-performance column queries from MongoDB for Python 2. 10x speedup over pymongo alone.</div><div class="line">aur/python2-pymongo-2.9 2.9-1 (0) (0.00)</div><div class="line">    Python driver for MongoDB</div><div class="line">aur/robomongo 0.9.0-1 (70) (4.08)</div><div class="line">    Shell-centric cross-platform open source MongoDB management tool</div><div class="line">aur/robomongo-bin 0.9.0-1 (20) (1.54)</div><div class="line">    Shell-centric cross-platform open source MongoDB management tool</div><div class="line">aur/ros-indigo-moveit-ros-warehouse 0.6.5-2 (0) (0.00)</div><div class="line">    ROS - Components of MoveIt connecting to MongoDB.</div><div class="line">aur/ros-indigo-warehouse-ros 0.8.8-4 (0) (0.00)</div><div class="line">    ROS - Persistent storage of ROS data using MongoDB.</div><div class="line">aur/umongo 1.6.2-1 (40) (1.18)</div><div class="line">    This package provides a GUI app that can browse and administer a MongoDB cluster</div><div class="line">[palm@arch]: ~/myapps/node-web-learn&gt;$ sudo pacman -Ss MongoDB</div><div class="line">[sudo] password for palm: </div><div class="line">community/libmongoc 1.4.2-1</div><div class="line">    A client library written in C for MongoDB</div><div class="line">community/mongodb 3.2.10-2</div><div class="line">    A high-performance, open source, schema-free document-oriented database</div><div class="line">community/mongodb-tools 3.2.5-1</div><div class="line">    The MongoDB tools provide import, export, and diagnostic capabilities.</div><div class="line">community/php-mongodb 1.1.9-1</div><div class="line">    MongoDB driver for PHP</div><div class="line">community/python-pymongo 3.3.1-1</div><div class="line">    Python module for using MongoDB</div><div class="line">community/python2-pymongo 3.3.1-1</div><div class="line">    Python module for using MongoDB</div></pre></td></tr></table></figure></p>
+<p>随便挑选一个安装就可以了.</p>
+<h2 id="使用MongoDB"><a href="#使用MongoDB" class="headerlink" title="使用MongoDB"></a>使用MongoDB</h2><p>软件找到了以后, 然后找到<code>mongodb</code> node.js的<a href="http://mongodb.github.io/node-mongodb-native/2.2/installation-guide/" target="_blank" rel="external">支持指南</a> 按照指南安装好node.js的mongodb驱动包,然后编写一个小demo测试一下, <a href="http://mongodb.github.io/node-mongodb-native/2.2/quick-start/" target="_blank" rel="external">Quick Start</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient,assert = require(&apos;assert&apos;);</div><div class="line">// Connection URL</div><div class="line">var url = &apos;mongodb://localhost:27017/myproject&apos;;</div><div class="line"></div><div class="line">// Use connect method to connect to the server</div><div class="line">MongoClient.connect(url, function(err, db) &#123;</div><div class="line">  assert.equal(null, err);</div><div class="line">  console.log(&quot;Connected successfully to server&quot;);</div><div class="line"></div><div class="line">  db.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>接着运行 <code>node app.js</code> ,  不是我想象的那般顺利, 错误如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[palm@arch]: ~/myapps/mongodb-test&gt;$ node app.js </div><div class="line"></div><div class="line">/home/palm/myapps/mongodb-test/node_modules/mongodb/lib/mongo_client.js:225</div><div class="line">          throw err</div><div class="line">          ^</div><div class="line">AssertionError: null == &#123; MongoError: failed to connect to server [localhost:27017] on first connect</div><div class="line">    at Pool.&lt;anonymous&gt; (/home/palm/myapps/mongodb-</div><div class="line">    at /home/palm/myapps/mongodb-test/app.js:9:10</div><div class="line">    at connectCallback (/home/palm/myapps/mongodb-test/node_modules/mongodb/lib/mongo_client.js:315:5)</div><div class="line">    at /home/palm/myapps/mongodb-test/node_modules/mongodb/lib/mongo_client.js:222:11</div><div class="line">    at _combinedTickCallback (internal/process/next_tick.js:67:7)</div><div class="line">    at process._tickCallback (internal/process/next_tick.js:98:9)</div></pre></td></tr></table></figure>
+<p>网络上一顿狂搜, 好像安装好以后需要指定mongodb存放数据的目录, 默认在<code>/data/db</code>  于是:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[palm@arch]: ~/myapps/mongodb-test/data&gt;$ mongod --dbpath=/home/palm/myapps/mongodb-test/data</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] MongoDB starting : pid=13694 port=27017 dbpath=/home/palm/myapps/mongodb-test/data 64-bit host=arch</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] db version v3.2.10</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] git version: 79d9b3ab5ce20f51c272b4411202710a082d0317</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2j  26 Sep 2016</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] allocator: tcmalloc</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] modules: none</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] build environment:</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten]     distarch: x86_64</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten]     target_arch: x86_64</div><div class="line">2016-11-21T10:45:55.066+0800 I CONTROL  [initandlisten] options: &#123; storage: &#123; dbPath: <span class="string">"/home/palm/myapps/mongodb-test/data"</span> &#125; &#125;</div><div class="line">2016-11-21T10:45:55.086+0800 I STORAGE  [initandlisten] exception <span class="keyword">in</span> initAndListen: 98 Unable to create/open lock file: /home/palm/myapps/mongodb-test/data/mongod.lock errno:13 Permission denied Is a mongod instance already running?, terminating</div><div class="line">2016-11-21T10:45:55.086+0800 I CONTROL  [initandlisten] dbexit:  rc: 100</div></pre></td></tr></table></figure>
+<p>大概意思是, 已经有mongodb服务在运行中,现在没有权限再创建一个mongodb实例.  然后我使用<code>ps</code> 确是查询到了很多个mongodb进程.  找到后一一都干死, 然后从<code>Archlinux Wiki</code> MongoDB篇又了解到在Archlinux中<a href="https://wiki.archlinux.org/index.php/MongoDB#Installation" target="_blank" rel="external">MongoDB安装指南</a> 需要使用<code>systemctl</code> 启动服务:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start mongodb.service</div></pre></td></tr></table></figure>
+<p>下面也有一些常用问题解决方案,例如mongodb服务异常关闭导致被锁,和mongodb使用指南, 很方便,  之前老听人说<code>Archlinux Wiki</code> 是Linux发行版最完整最详细的Wiki,  现在看来,越来越觉得确是如此, 平时archlinx 闹脾气也都是翻阅Wiki解决的. </p>
+<p>这一通折腾之后, 使用<code>--repair</code>修复之前的<code>database</code> 设置, 如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath /home/palm/myapps/mongodb-test/data --repair</div></pre></td></tr></table></figure>
+<p>然后运行<code>mongo</code> 进入mongodb命令行(MongoDB shell)并初始化数据库:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[palm@arch]: ~/myapps/mongodb-test&gt;$ mongo</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">connecting to: <span class="built_in">test</span></div><div class="line">Welcome to the MongoDB shell.</div><div class="line">For interactive <span class="built_in">help</span>, <span class="built_in">type</span> <span class="string">"help"</span>.</div><div class="line">For more comprehensive documentation, see</div><div class="line">	http://docs.mongodb.org/</div><div class="line">Questions? Try the support group</div><div class="line">	http://groups.google.com/group/mongodb-user</div><div class="line">Server has startup warnings: </div><div class="line">2016-11-21T14:19:39.625+0800 I CONTROL  [initandlisten] </div><div class="line">2016-11-21T14:19:39.625+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is <span class="string">'always'</span>.</div><div class="line">2016-11-21T14:19:39.625+0800 I CONTROL  [initandlisten] **        We suggest setting it to <span class="string">'never'</span></div><div class="line">2016-11-21T14:19:39.625+0800 I CONTROL  [initandlisten] </div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>这代表mongodb服务已经成功启动了, 可以使用了, 到这里,我总算是半只脚迈进了mongodb的大门, 接下来可以在项目实践中一边学习一边使用mongodb了.</p>
+<h2 id="关于设置mongodb数据存储目录"><a href="#关于设置mongodb数据存储目录" class="headerlink" title="关于设置mongodb数据存储目录"></a>关于设置mongodb数据存储目录</h2><p>在linux中,默认情况下手动安装或解压mongodb应用包后,缺少数据存储目录: </p>
+<blockquote>
+<p>默认为<code>/data/db</code></p>
+</blockquote>
+<p>这个目录最开始是不存在的,而且运行参数设定命令也不会自动帮我们新建. 所以需要提前将这个目录新建完成. 当然,这个目录是可以修改的, 使用<code>--dbpath</code> 自定义mongodb数据存储目录.  使用<code>--port arg</code> 可以自定义服务端口, 还有主机地址 host , 更多参数帮助可以使用:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongo --help</div></pre></td></tr></table></figure>
+<p>查看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">[palm@arch]: ~/myapps/mongodb-test&gt;$ mongo --help</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">usage: mongo [options] [db address] [file names (ending <span class="keyword">in</span> .js)]</div><div class="line">db address can be:</div><div class="line">  foo                   foo database on <span class="built_in">local</span> machine</div><div class="line">  192.169.0.5/foo       foo database on 192.168.0.5 machine</div><div class="line">  192.169.0.5:9999/foo  foo database on 192.168.0.5 machine on port 9999</div><div class="line">Options:</div><div class="line">  --shell                             run the shell after executing files</div><div class="line">  --nodb                              don<span class="string">'t connect to mongod on startup - no </span></div><div class="line">                                      'db address<span class="string">' arg expected</span></div><div class="line">  --norc                              will not run the ".mongorc.js" file on </div><div class="line">                                      start up</div><div class="line">  --quiet                             be less chatty</div><div class="line">  --port arg                          port to connect to</div><div class="line">  --host arg                          server to connect to</div><div class="line">  --eval arg                          evaluate javascript</div><div class="line">  -h [ --help ]                       show this usage information</div><div class="line">  --version                           show version information</div><div class="line">  --verbose                           increase verbosity</div><div class="line">  --ipv6                              enable IPv6 support (disabled by default)</div><div class="line">  --disableJavaScriptJIT              disable the Javascript Just In Time </div><div class="line">                                      compiler</div><div class="line">  --enableJavaScriptProtection        disable automatic JavaScript function </div><div class="line">                                      marshalling</div><div class="line">  --ssl                               use SSL for all connections</div><div class="line">  --sslCAFile arg                     Certificate Authority file for SSL</div><div class="line">  --sslPEMKeyFile arg                 PEM certificate/key file for SSL</div><div class="line">  --sslPEMKeyPassword arg             password for key in PEM file for SSL</div><div class="line">  --sslCRLFile arg                    Certificate Revocation List file for SSL</div><div class="line">  --sslAllowInvalidHostnames          allow connections to servers with </div><div class="line">                                      non-matching hostnames</div><div class="line">  --sslAllowInvalidCertificates       allow connections to servers with invalid</div><div class="line">                                      certificates</div><div class="line">  --sslFIPSMode                       activate FIPS 140-2 mode at startup</div><div class="line"></div><div class="line">Authentication Options:</div><div class="line">  -u [ --username ] arg               username for authentication</div><div class="line">  -p [ --password ] arg               password for authentication</div><div class="line">  --authenticationDatabase arg        user source (defaults to dbname)</div><div class="line">  --authenticationMechanism arg       authentication mechanism</div><div class="line">  --gssapiServiceName arg (=mongodb)  Service name to use when authenticating </div><div class="line">                                      using GSSAPI/Kerberos</div><div class="line">  --gssapiHostName arg                Remote host name to use for purpose of </div><div class="line">                                      GSSAPI/Kerberos authentication</div><div class="line"></div><div class="line">file names: a list of files to run. files have to end in .js and will exit after unless --shell is specified</div></pre></td></tr></table></figure>
+<p>如果你将mongodb数据存储目录设置在非<code>/home/</code> 下,则需要注意权限,  需要让自定义目录拥有<code>-r 可读 / -w 可写 / -x 可执行</code> 的权限.</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://docs.mongodb.com/manual/administration/install-on-linux/" target="_blank" rel="external">Install MongoDB Community Edition on Linux</a></li>
+<li><a href="http://mongodb.github.io/node-mongodb-native/2.2/quick-start/" target="_blank" rel="external">mongoDB# Quick Start</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/MongoDB#Installation" target="_blank" rel="external">MongoDB in Archlinux</a></li>
+<li><a href="http://stackoverflow.com/questions/15229412/unable-to-create-open-lock-file-data-mongod-lock-errno13-permission-denied" target="_blank" rel="external">stackoverflow #Unable to create/open lock file</a></li>
+<li><a href="http://stackoverflow.com/questions/7948789/mongodb-mongod-complains-that-there-is-no-data-db-folder" target="_blank" rel="external">stackoverflow  #mongodb Mongod complains that there is no /data/db folder</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;MongoDB安装&quot;&gt;&lt;a href=&quot;#MongoDB安装&quot; class=&quot;headerlink&quot; title=&quot;MongoDB安装&quot;&gt;&lt;/a&gt;MongoDB安装&lt;/h2&gt;&lt;p&gt;学习node快接近尾声了, 想使用express+ejs+mongoDB 完成一个小栗子, 算是我学习node的一个结业考试.  不过,之前从来没有接触过mongodb,对我这小小白来说, 安装-启动mongodb都异常的艰难,  想想真是 …  铁窗呀 ~~  铁门 ~  铁锁链 ~~~  路过的你们请尽情嘲笑吧 ,  我不怕!!!!&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="db" scheme="https://egene-huang.github.io/categories/db/"/>
+    
+    
+      <category term="mongodb" scheme="https://egene-huang.github.io/tags/mongodb/"/>
+    
+      <category term="mongodb install" scheme="https://egene-huang.github.io/tags/mongodb-install/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java基础</title>
+    <link href="https://egene-huang.github.io/2016/11/17/java-se/"/>
+    <id>https://egene-huang.github.io/2016/11/17/java-se/</id>
+    <published>2016-11-17T14:21:32.000Z</published>
+    <updated>2016-11-17T16:39:08.457Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>抽空把java基础部分内容通过自己的理解整理如下，心想着等我技艺升级后在回过头来可能会有不一样的收获呢,这也是极好的。同时也想请大家慷慨指出下面错误、遗漏、或不准确的地方，如果大家对某一块有不一样的理解，也请一并留言！<br> 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　            — 谢谢大家!</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="java-基础笔记"><a href="#java-基础笔记" class="headerlink" title="java 基础笔记"></a>java 基础笔记</h2><h3 id="java-关键字-也称为保留字"><a href="#java-关键字-也称为保留字" class="headerlink" title="java 关键字(也称为保留字)"></a>java 关键字(也称为保留字)</h3><blockquote>
+<p><code>notice</code>&gt; 这里只是罗列出我们工作可能用到的.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>public</th>
+<th style="text-align:center">class</th>
+<th style="text-align:center">new</th>
+<th style="text-align:center">import</th>
+<th style="text-align:center">package</th>
+<th style="text-align:center">static</th>
+<th style="text-align:right">final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>synchronized</td>
+<td style="text-align:center">private</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">return</td>
+<td style="text-align:center">break</td>
+<td style="text-align:right">continue</td>
+</tr>
+<tr>
+<td>for</td>
+<td style="text-align:center">while</td>
+<td style="text-align:center">do</td>
+<td style="text-align:center">goto[^1]</td>
+<td style="text-align:center">enum</td>
+<td style="text-align:center">interface</td>
+<td style="text-align:right">extends</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td style="text-align:center">implements</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">float</td>
+<td style="text-align:right">short</td>
+</tr>
+<tr>
+<td>byte</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">super</td>
+<td style="text-align:center">if</td>
+<td style="text-align:center">else</td>
+<td style="text-align:right">case</td>
+</tr>
+<tr>
+<td>switch</td>
+<td style="text-align:center">finally</td>
+<td style="text-align:center">instanceof</td>
+<td style="text-align:center">this</td>
+<td style="text-align:center">throws</td>
+<td style="text-align:center">transient</td>
+<td style="text-align:right">try</td>
+</tr>
+<tr>
+<td>catch</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">const</td>
+<td style="text-align:center">throw</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:right">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="java-的CLASSPATH"><a href="#java-的CLASSPATH" class="headerlink" title="java 的CLASSPATH"></a>java 的CLASSPATH</h3><p>　　java 的classpath 用来设置JVM加载类(class) 的路径,一般设置值为<code>.</code> 表示从当前路径开始加载。JVM默认为从当前路径开始加载.但是我们依然需要设置这个值，因为，如果此路径被指定为其他路径则当前路径下class 就不会被加载了。 比如我们设置<code>CLASSPATH=&#39;/home/test/javatest/&#39;</code>, 则我们将javatest下生成的class文件移动到<code>home</code>目录下，执行<code>java</code> 命令会提示找不到<code>xxx class</code> 。</p>
+<h3 id="java-的path"><a href="#java-的path" class="headerlink" title="java 的path"></a>java 的path</h3><p>　　<code>path</code>在系统里用来帮助系统找到应用程序可执行文件.这里我们是为了方便找到<code>javac</code> 和<code>java</code>命令.  _包含jdk/bin/和jre/bin/ 目录下的命令。
+　　</p>
+<h3 id="关于类文件名和public-修饰的类名一致"><a href="#关于类文件名和public-修饰的类名一致" class="headerlink" title="关于类文件名和public 修饰的类名一致"></a>关于类文件名和public 修饰的类名一致</h3><p>　　我们要求类文件名要和<code>public</code>修饰的类名一致，这是为什么呢？<br>　　我们可以尝试将文件名和<code>public</code>修饰的类名不一致，编译后我们观察<code>class</code>文件．我们会发现<code>class</code>文件名称是我们<code>public</code>修饰的名子，不会编译成为这个类所在的文件的名．所以会有找不到编写类的可能． 同时也是为了方便找到对应文件所在的类。</p>
+<h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p>　　标识符是我们平常编写代码经常使用到的．我们给类、变量等去名子的时候需要遵守java标识符规范。<br><strong>标识符规范我们：只能用数字、字母、下划线(_) 、$组成，且不能以数字开头或使用java关键字.</strong></p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>java 数据类型大致分为以下两大类型:</p>
+<ol>
+<li><p>基本数据类型:</p>
+<ol>
+<li>整型数据类型：byte、int、short、long　　　　-&gt; 默认值 : 0</li>
+<li>浮点数据类型(实型)： float、double    　　　　　  -&gt; 默认值：0.0</li>
+<li>字符型: char　　　　　　　　　　　　　　　　  -&gt; 默认值：‘\u0000’</li>
+<li>布尔型: boolean　　　　　　　　　　　　　　   -&gt; 默认值: false</li>
+</ol>
+</li>
+<li><p>引用类型:<br> 数组、类、接口　　　　　　　　　　　　　　　　　-&gt; 默认值: null</p>
+</li>
+</ol>
+<blockquote><p>这里有一个需要记住的是 <code>char</code> 的取值范围是<code>-128 ~ 127</code>。基本数据类型中, 数据最大值和最小值是<code>相邻</code>的，<br>比如说：<br> int 数据最大值加一则变为最小值. 同理，最小值减一则变为最大值。这个特性很重要 。</p>
+<p>Byte、Short、Integer、Long、Character、Boolean 这五种包装类默认创建了数值[-128 ~ 127]对应类型的缓存数据，但是超出范围后仍然会创建新的对象。Float 、Double 并没有实现常量池技术。</p>
+</blockquote>
+<p> 比如：</p>
+<pre><code class="java">Integer i1 = <span class="number">40</span>; <span class="comment">//在编译的时候会直接放入常量池中</span>
+Integer i2 = <span class="keyword">new</span> <span class="function">Intege    <span class="title">r</span><span class="params">(<span class="number">40</span>)</span></span>;<span class="comment">//会创建新的对象</span>
+Integer i5 = <span class="keyword">new</span> Integer(<span class="number">0</span>);
+
+System.out.println(<span class="string">"i1 == i2 "</span>+ (i1 == i2)); <span class="comment">//false</span>
+System.out.println(<span class="string">"i1 == i2+i5 "</span>+ (i1 == i2+i5)); <span class="comment">//true</span>
+System.out.println(<span class="string">"i1 == i2 "</span>+ (<span class="number">40</span> == i2)); <span class="comment">//true</span>
+
+Integer i3 = <span class="number">129</span>;
+Integer i4 = <span class="number">129</span>;<span class="comment">//new Integer(129);</span>
+System.out.println(<span class="string">"i3== i4 "</span>+ (i3 == i4));<span class="comment">// false</span>
+</code></pre>
+<blockquote><p>但是有一个特性，普通操作符不使用于包装类，所以包装类做普通运算的时候会自动拆箱进行运算。例如 Integer 和int 比较  或者Integer 和int  做 + - * /运算都会自动拆箱后运算。所以结果会跟我想的不一样，我们需要注意.</p>
+</blockquote>         
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;抽空把java基础部分内容通过自己的理解整理如下，心想着等我技艺升级后在回过头来可能会有不一样的收获呢,这也是极好的。同时也想请大家慷慨指出下面错误、遗漏、或不准确的地方，如果大家对某一块有不一样的理解，也请一并留言！&lt;br&gt; 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　            — 谢谢大家!&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://egene-huang.github.io/categories/Java/"/>
+    
+    
+      <category term="java" scheme="https://egene-huang.github.io/tags/java/"/>
+    
+      <category term="javase" scheme="https://egene-huang.github.io/tags/javase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java回调函数</title>
+    <link href="https://egene-huang.github.io/2016/11/17/java-callback/"/>
+    <id>https://egene-huang.github.io/2016/11/17/java-callback/</id>
+    <published>2016-11-17T05:42:37.000Z</published>
+    <updated>2016-11-17T14:03:51.510Z</updated>
+    
+    <content type="html"><![CDATA[<p>在js中,因为js是单线程,所以在js中操作中,经常使用回调函数实现程序的异步执行, 从而解决代码串行导致线程阻塞的问题,或者类似<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="external">map</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="external">filter</a>等函数 - 将一个函数作用到数组的每个元素上. </p>
+<a id="more"></a> 
+<p>如下这样:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dosomth</span>(<span class="params">arg,callback</span>) </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> exec = (<span class="keyword">typeof</span> callback === <span class="string">'function'</span>) , </div><div class="line">              ret = [], isArr = arg <span class="keyword">instanceof</span> <span class="built_in">Array</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (!exec) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(callback + <span class="string">' is not a function'</span>) ;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (isArr) &#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len = arg.length; i &lt; len ; i++) &#123;</div><div class="line">			ret.push(callback.call(<span class="literal">null</span>,arg[i])) ;</div><div class="line">		&#125;</div><div class="line">	&#125;<span class="keyword">else</span> &#123;</div><div class="line">		ret = arg ;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> ret ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = dosomth([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> e * e ;</div><div class="line">&#125;) ;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr) ;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//print</div><div class="line">[ 1, 4, 9, 16, 25 ]</div></pre></td></tr></table></figure>
+<p>这段代码简单的模仿了javascript高阶函数<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="external"><code>map</code></a>, 循环处理每一个<code>Entry</code> ,  在js中能这么使用得益于javaScript中函数有多样化的表达方式, 函数可以是一个对象,也可以是一个函数表达式, 在上面我们可以将一个函数当做一个形参传递给函数<code>dosomth</code> . 在java中是没办法做到这一点的, 因为在java中,一切皆对象, 所以成员都需要依附在某个对象上, 所以,如果想实现类似上述回调的机制, 可以从java的代理模式上找到灵感. </p>
+<p>先定义一个<code>回调函数</code>接口:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callback</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function">List&lt;String&gt; <span class="title">callback</span><span class="params">(List&lt;String&gt; list)</span> </span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后,定义使用<code>这个回调函数的抽象业务类</code> , 如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">doSomthing</span><span class="params">(List&lt;String&gt; list,Callback callback)</span> </span>&#123;</div><div class="line">        <span class="comment">//</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> callback.callback(list) ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后定义具体的业务类,如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        C c = <span class="keyword">new</span> C() ;</div><div class="line"></div><div class="line"></div><div class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;() ;</div><div class="line">        list.add(<span class="string">"1"</span>);</div><div class="line">        list.add(<span class="string">"2"</span>);</div><div class="line">        list.add(<span class="string">"3"</span>);</div><div class="line">        list.add(<span class="string">"4"</span>);</div><div class="line">        list.add(<span class="string">"5"</span>);</div><div class="line">        list.add(<span class="string">"6"</span>);</div><div class="line">        list.add(<span class="string">"7"</span>);</div><div class="line">        list.add(<span class="string">"8"</span>);</div><div class="line"></div><div class="line">        List&lt;String&gt; result = c.doSomthing(list, <span class="keyword">new</span> Callback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">callback</span><span class="params">(List&lt;String&gt; list)</span> </span>&#123;</div><div class="line">                List&lt;String&gt; list1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">                <span class="keyword">for</span> (String str : list) &#123;</div><div class="line">                    list1.add(str + <span class="string">"_"</span> + str);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">return</span> list1;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//</span></div><div class="line">        &#125;) ;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">" 处理后的字符数组 : "</span> + result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行<code>test.main</code> 可以看到输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">处理后的字符数组 : [1_1, 2_2, 3_3, 4_4, 5_5, 6_6, 7_7, 8_8]</div></pre></td></tr></table></figure></p>
+<p>在这段代码中,其实就是将js中的函数表达式引用变为java对象引用持有,然后调用指定方法或函数实现业务功能. 这其实和代理模式一样一样的. 都是将具体的业务处理逻辑委托给另一个对象来完成.</p>
+<p>以上就是我对代理和java版<code>回调</code>的理解,请指正!  thx ~~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在js中,因为js是单线程,所以在js中操作中,经常使用回调函数实现程序的异步执行, 从而解决代码串行导致线程阻塞的问题,或者类似&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map&quot;&gt;map&lt;/a&gt;/&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter&quot;&gt;filter&lt;/a&gt;等函数 - 将一个函数作用到数组的每个元素上. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://egene-huang.github.io/categories/Java/"/>
+    
+    
+      <category term="java" scheme="https://egene-huang.github.io/tags/java/"/>
+    
+      <category term="callback" scheme="https://egene-huang.github.io/tags/callback/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Hexo</title>
+    <link href="https://egene-huang.github.io/2016/11/16/hexo-hello/"/>
+    <id>https://egene-huang.github.io/2016/11/16/hexo-hello/</id>
+    <published>2016-11-16T11:25:24.626Z</published>
+    <updated>2016-11-16T11:25:24.626Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Just Do</title>
+    <link href="https://egene-huang.github.io/2016/11/16/success-text/"/>
+    <id>https://egene-huang.github.io/2016/11/16/success-text/</id>
+    <published>2016-11-16T06:42:07.000Z</published>
+    <updated>2016-11-16T11:25:24.626Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<p>   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 <em>github</em> 上，结果就导致了 <code>/public/</code> 、<code>/node_modules/</code>、<code>db.json</code>等这些文件/夹也推动到github上了, 一直只是<code>听说git/github</code> 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个<code>.gitignore</code>文件可以做到忽略指定文件/夹， 让我们<code>git status</code> 不会罗列被忽略的文件。</p>
+<blockquote><p>Do not seek to follow in the footsteps of the men of old; seek what they sought.<br>不要追寻先人的足迹,追寻先人所追寻的吧!</p>
+<footer><strong>Basho</strong></footer></blockquote>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;blockquote&gt;&lt;p&gt;Do not seek to follow in the footsteps of the men of old; seek what they sought.&lt;br&gt;不要追寻先人的足迹,追寻先人所追寻的吧!&lt;/p&gt;
+&lt;footer&gt;&lt;st
+    
+    </summary>
+    
+    
+      <category term="english shanbay" scheme="https://egene-huang.github.io/tags/english-shanbay/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用.gitignore文件取消某些文件版本控制</title>
+    <link href="https://egene-huang.github.io/2016/11/15/remove-tracked-file/"/>
+    <id>https://egene-huang.github.io/2016/11/15/remove-tracked-file/</id>
+    <published>2016-11-15T14:25:29.000Z</published>
+    <updated>2016-11-16T11:25:24.626Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 <em>github</em> 上，结果就导致了 <code>/public/</code> 、<code>/node_modules/</code>、<code>db.json</code>等这些文件/夹也推送到github上了, 一直只是<code>听说git/github</code> 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个<code>.gitignore</code>文件可以做到忽略指定文件/夹， 让我们<code>git status</code> 不会罗列被忽略的文件。</p>
 <a id="more"></a>
 <p>所以我就在git仓库根目录下新建了<code>.gitignore</code> 结果，没有生效，因为这些文件之前已经被git追踪了，网上一顿找，需要先告诉git取消这些文件的追踪 ， 需要运行这行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm --cached public/</div></pre></td></tr></table></figure></p>
 <p>使用这种方式是无法达到目的的，会提示:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: not removing <span class="string">'public/'</span> recursively without -r</div></pre></td></tr></table></figure></p>
@@ -37,39 +324,12 @@
     <summary type="html">
     
       &lt;hr&gt;
-&lt;p&gt;   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 &lt;em&gt;github&lt;/em&gt; 上，结果就导致了 &lt;code&gt;/public/&lt;/code&gt; 、&lt;code&gt;/node_modules/&lt;/code&gt;、&lt;code&gt;db.json&lt;/code&gt;等这些文件/夹也推动到github上了, 一直只是&lt;code&gt;听说git/github&lt;/code&gt; 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个&lt;code&gt;.gitignore&lt;/code&gt;文件可以做到忽略指定文件/夹， 让我们&lt;code&gt;git status&lt;/code&gt; 不会罗列被忽略的文件。&lt;/p&gt;
+&lt;p&gt;   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 &lt;em&gt;github&lt;/em&gt; 上，结果就导致了 &lt;code&gt;/public/&lt;/code&gt; 、&lt;code&gt;/node_modules/&lt;/code&gt;、&lt;code&gt;db.json&lt;/code&gt;等这些文件/夹也推送到github上了, 一直只是&lt;code&gt;听说git/github&lt;/code&gt; 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个&lt;code&gt;.gitignore&lt;/code&gt;文件可以做到忽略指定文件/夹， 让我们&lt;code&gt;git status&lt;/code&gt; 不会罗列被忽略的文件。&lt;/p&gt;
     
     </summary>
     
     
-      <category term="git, github" scheme="http://yoursite.com/tags/git-github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/11/15/hello-world/"/>
-    <id>http://yoursite.com/2016/11/15/hello-world/</id>
-    <published>2016-11-15T12:48:11.849Z</published>
-    <updated>2016-11-15T12:48:11.849Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
+      <category term="git, github" scheme="https://egene-huang.github.io/tags/git-github/"/>
     
   </entry>
   
