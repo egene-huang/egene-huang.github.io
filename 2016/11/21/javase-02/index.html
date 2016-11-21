@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,javase," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="palm.strive'blog" type="application/atom+xml" />
+
+
+
+
+
+
+
+
+
+<meta name="description" content="继续java基础,　目前因为在Hexo上使用Markdown书写格式上还有些问题，所以暂时将java 基础分为多个部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接java基础">
+<meta property="og:url" content="https://egene-huang.github.io/2016/11/21/javase-02/index.html">
+<meta property="og:site_name" content="palm.strive'blog">
+<meta property="og:description" content="继续java基础,　目前因为在Hexo上使用Markdown书写格式上还有些问题，所以暂时将java 基础分为多个部分">
+<meta property="og:updated_time" content="2016-11-21T16:43:22.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="接java基础">
+<meta name="twitter:description" content="继续java基础,　目前因为在Hexo上使用Markdown书写格式上还有些问题，所以暂时将java 基础分为多个部分">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://egene-huang.github.io/2016/11/21/javase-02/"/>
+
+
+
+
+
+  <title> 接java基础 | palm.strive'blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">palm.strive'blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/egene-huang" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2016/11/21/javase-02/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive'blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                接java基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-21T23:48:59+08:00">
+                2016-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/21/javase-02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/javase-02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>继续<a href="https://egene-huang.github.io/2016/11/17/java-se/">java基础</a>,　目前因为在<code>Hexo</code>上使用<code>Markdown</code>书写格式上还有些问题，所以暂时将<code>java 基础分为多个部分</code></p>
+<a id="more"></a>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>[ &amp; ]:  逻辑运算的时候会判断所有表达式的值，其结果是，如果有一个为false 则结果为false。<br>[ | ]:  逻辑运算的时候会判断所有表达式的值，其结果是，如果有一个为true 则结果为true。<br>[ &amp;&amp; ]:  称为短路与，其运算规则为：如果遇到一个false 值，则不再计算之后的表达式的值，返回其结果为false。</p>
+<p>短路与的意义可以用一下程序片段解释：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="keyword">int</span> n =<span class="number">12</span>;</div><div class="line"><span class="keyword">if</span> (n &lt; <span class="number">0</span> &amp;&amp; n/<span class="number">0</span>&gt; <span class="number">2</span>)&#123;</div><div class="line">	System.out.println(<span class="string">"满足条件."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然这段程序不会出错，因为地一个表达式值为false,则不会再判断之后的表达式。也就不会出错。</p>
+<p>[ || ]: 也称为短路或，其运算规则为： 如果遇到一个true值，则不再计算之后的表达式的值，返回其结果为true。</p>
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p>[ &amp; ]:  在位运算中，规则为：其中一个为<code>0</code>则结果就为<code>0</code>,  两个都为<code>1</code> 结果才为<code>1</code>。<br>[ | ]:    在位运算中， 规则为：其中一个为<code>1</code>则结果就为<code>1</code>,两个都为<code>0</code> 结果才为<code>0</code>。<br>如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &amp; </span></div><div class="line">    <span class="number">10010</span></div><div class="line">&amp;</div><div class="line">    <span class="number">10011</span></div><div class="line">-------------</div><div class="line">    <span class="number">10010</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// |</span></div><div class="line">  <span class="number">10010</span></div><div class="line">|</div><div class="line">  <span class="number">10011</span></div><div class="line">-----------</div><div class="line">  <span class="number">10011</span></div></pre></td></tr></table></figure>
+<h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><p>三目运算格式为： 类型 变量 = 逻辑表达式 ? 值1 : 值2;</p>
+<blockquote>
+<p>解释：<br>当逻辑表达式的值为<code>true</code>时 则将值1赋值给变量。否则将值2赋值给变量。</p>
+</blockquote>
+<p>此多运用于简单的<code>if ...else .....</code> 判断。简化代码。 但是不可以滥用。</p>
+<h3 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h3><h4 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h4><p>按照代码编写顺序执行。</p>
+<h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4><p>可以直接理解为 <code>if</code>判断 或者多个<code>if</code> 或者<code>if ... else ....</code> 或者<code>if ...else  if ... else ... .....</code>等等.</p>
+<blockquote>
+<p>这里需要重视的是分支结构里当有重叠条件匹配时，只会进入首次匹配条件，不会再进入第二次匹配上的条件。</p>
+</blockquote>
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p>使用<code>while</code> 、<code>do ...while</code> 、<code>for</code> 来控制代码执行顺序的代码结构。</p>
+<blockquote>
+<p>这里我们可以使用<code>break</code> 、<code>continue</code> 加标签的形式控制多层循环。代码实例如下：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">outer:</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">	inner:</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;<span class="number">8</span>;y++)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;<span class="number">5</span>;n++)&#123;</div><div class="line">			<span class="keyword">if</span>(n ==<span class="number">3</span> )&#123;</div><div class="line">				<span class="keyword">continue</span> outer;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</div><div class="line">				<span class="keyword">break</span> inner;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>以上代码顺序执行解释如： 当n 为3时 则从最外层的下一次循环开始执行。则i值为1的这次循环。<br>当n 为4时，则跳出y变量所在for循环进入i 变量所在for循环的下一次循环。       </p>
+</blockquote>
+<h4 id="多分支结构"><a href="#多分支结构" class="headerlink" title="多分支结构"></a>多分支结构</h4><p>switch 语句用于多分支结构，使用基本类型值匹配条件，执行语句，避免编写复杂的<code>if...else ....</code> 使代码更易维护和查看。<br>格式为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(值)&#123;</div><div class="line">	<span class="keyword">case</span> v1: [代码块;]</div><div class="line">	[<span class="keyword">break</span>];</div><div class="line">	<span class="keyword">case</span> v2: [代码块;]</div><div class="line">	[<span class="keyword">break</span>];</div><div class="line">	......</div><div class="line">	<span class="keyword">default</span>:代码块;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上 <code>[]</code>里面的内容代表可选。我们可以不用做任何操作，语法上是允许的。</p>
+<ol>
+<li><p>假如我们没有在没一个匹配上的<code>case</code> 之后加上<code>break</code> 组织程序继续执行，则程序会在首个匹配上的<code>case</code>之后继续执行之后的所有<code>case</code>. 导致得到你预想之外的结果; </p>
+</li>
+<li><p>假如程序没有匹配上任何一个<code>case</code> 如果有编写<code>default</code>语句，则自动执行<code>default</code> 代码块，如果没有则走完所有<code>case</code>后退出<code>switch</code>。</p>
+</li>
+</ol>
+<p>关于<code>for&#39;</code>和<code>while</code> 使用上的选择：  一般，我们在知道循环次数的时候首先选择 ‘for’ 控制循环，在不知道循环次数，但是知道循环结束条件的时候考虑使用<code>while</code>类循环，</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><p>平时我们可能需要某一类的功能，区别只是参数类型或者个数有所区别，那么我们可以考虑方法的重载，不用编写多个方法。例如： 我们需求如下：</p>
+<ol>
+<li>需要两个int 型数据相加的方法;</li>
+<li>需要三个int 型数据相加的方法;</li>
+<li>需要两个double型数据相加的方法;</li>
+</ol>
+<p>以上需求我们实现最原始的方式是给三个方法取三个不同的方法名以适应以上三个需求。假如我们考虑重载(Overload) 则只需要同一个方法名，不同参数就可以了，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>以上为方法重载，在我们调用的时候直接调用<code>add(..)</code> 即可，不用如此调用<code>add1(...)</code> / <code>add2(..)</code><br>以上使用了不同的返回值类型，我们一般在编写重载方法的时候不建议编写返回值类型不同的重载方法。虽然jdk没有如此强调。重载方法统一返回类型，有利用使用。</p>
+</blockquote>
+<h3 id="String-一些事儿"><a href="#String-一些事儿" class="headerlink" title="String 一些事儿"></a>String 一些事儿</h3><p>String 不是基本数据类型。String 是一个特殊的类。首先我们实例化对象有以下两种方式：</p>
+<ol>
+<li>直接赋值实例化<br> String str = “字符串”; </li>
+<li>使用<code>new</code> 实例化Stirng对象<br> String str = new (“字符串”);  这种实例化方式在内存分配上有如下问题：<br> 首先，在堆内存中会分配一块内存存放匿名字符串对象 — “字符串”。然后，关键字<code>new</code> 再次堆内存再一次分配内存给”字符串”; 然后使用<code>str</code> 引用指向刚才分配的堆内存。<br> 至此开始分配的内存成为垃圾资源，等待GC回收。<br>需要注意String 字符比较中的<code>==</code> 和<code>equlas</code>。前者是比较字符串内存地址，是数值比较，后者比较字符内容。<br>关于字符比较注意点： 我们使用<code>equlas</code>比较字符串的时候应该避免未实例化对象调用方法。应该将未知字符对象作为参数使用。如：不应该 这样：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String var = <span class="string">"hello"</span>;</div><div class="line"><span class="keyword">if</span>(var.equlas(<span class="string">"hello"</span>))&#123;</div><div class="line">	<span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>查询<a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank" rel="external">JavaSE API</a> 找到　<code>java.lang # String</code> 可以根据需要找到对应api方法描述 -　如 字符串查找[#indexOf(String str)]／字符串截取[#substring(int beginIndex)] / 拆分等等</p>
+<h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><p>面向对象有显著的三大特征：</p>
+<ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>简单的来说就是内部实现对外不可见。常用的就是我们在简单java 类中经常使用private 修饰属性权限。这就是封装的典型使用。这样我们就不能在非本类中直接操作类信息，需要通过类对象操作类属性。<br>类实例化两种方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明并实例化对象</span></div><div class="line">类型名称 对象名称 = <span class="keyword">new</span> 类型名称();</div><div class="line"><span class="comment">//声明对象 ; 实例化对象</span></div><div class="line"> 类型名称 对象名称;</div><div class="line">对象名称 = <span class="keyword">new</span> 类型名称();</div></pre></td></tr></table></figure></p>
+<p>在java中对内存分配有<code>栈</code>和<code>堆</code>之分。 栈 存储基本类型数据和引用类型数据变量。堆存储引用类型数据内容。引用类型数据操作都存在内存关系处理。需要谨慎。<br>比如，现在有一个类A 则以下表达式内存关系解释：<br><code>A a ;</code>  在栈内存块中，声明一个变量<code>a</code> 没有任何指向，也可以认为<code>a</code>现在指向<code>null</code> 。<br><code>a = new A();</code>  在堆内存块中开辟一块内存空间，内容为<code>A</code>中属性的初始值。并将<code>a</code>指向它。</p>
+<p> 简单java类的编写：</p>
+<ul>
+<li>属性全部使用 private 封装。</li>
+<li>属性必须有setter &amp; getter方法。</li>
+<li>构造方法安装参数升序编写，必须有至少一个无参构造。</li>
+<li>保留一个能输出本类全部信息的方法。</li>
+</ul>
+<h3 id="this-super关键字"><a href="#this-super关键字" class="headerlink" title="this/super关键字"></a>this/super关键字</h3><p><code>this</code> 和<code>super</code>的区别:</p>
+<ul>
+<li><p>使用this 操作属性或方法，优先从本类查找，否则再从父类查找。<br>this 可以构造方法互调用，但是必须留一个出口否则形成循环调用,必须放在构造方法的首行。this 指当前对象。</p>
+</li>
+<li><p>super 存在继承关系中，指子类直接操作父类属性或方法。<br>  在实例化子类对象的时候必须先实例化其父类，默认会调用父类无参构造. <code>super();</code> 必须放在构造方法的首行。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/javase/" rel="tag"># javase</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/mongodb/" rel="next" title="初次学习mongodb">
+                <i class="fa fa-chevron-left"></i> 初次学习mongodb
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/21/javase-02/"
+           data-title="接java基础" data-url="https://egene-huang.github.io/2016/11/21/javase-02/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/Monkey-D-Luffy.jpg"
+               alt="egene-huang" />
+          <p class="site-author-name" itemprop="name">egene-huang</p>
+          <p class="site-description motion-element" itemprop="description">a boy</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">1.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位运算"><span class="nav-number">1.2.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三目运算符"><span class="nav-number">1.3.</span> <span class="nav-text">三目运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序结构"><span class="nav-number">2.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序结构"><span class="nav-number">2.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支结构"><span class="nav-number">2.2.</span> <span class="nav-text">分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环结构"><span class="nav-number">2.3.</span> <span class="nav-text">循环结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多分支结构"><span class="nav-number">2.4.</span> <span class="nav-text">多分支结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的重载"><span class="nav-number">3.1.</span> <span class="nav-text">方法的重载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-一些事儿"><span class="nav-number">4.</span> <span class="nav-text">String 一些事儿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类与对象"><span class="nav-number">5.</span> <span class="nav-text">类与对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">5.1.</span> <span class="nav-text">封装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-super关键字"><span class="nav-number">6.</span> <span class="nav-text">this/super关键字</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">egene-huang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"egene-huang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
