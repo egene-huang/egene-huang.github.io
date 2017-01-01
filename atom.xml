@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://egene-huang.github.io/"/>
-  <updated>2016-12-17T18:37:31.017Z</updated>
+  <updated>2017-01-01T15:16:26.036Z</updated>
   <id>https://egene-huang.github.io/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016,我成长啦!</title>
+    <link href="https://egene-huang.github.io/2017/01/01/growing-year/"/>
+    <id>https://egene-huang.github.io/2017/01/01/growing-year/</id>
+    <published>2017-01-01T13:49:34.000Z</published>
+    <updated>2017-01-01T15:16:26.036Z</updated>
+    
+    <content type="html"><![CDATA[<p>2016结束啦，　回想这一年，我自己能感觉到自己的进步，我自己还是很为自己高兴的，因为我相比之前确实成长了．口头表扬下我自己，~(#_#)~ 我也发现了自己很多的毛病，长期的自闭，导致自己不善于交流，甚至变得有些严重的玻璃心，不知道怎么去跟人相处，不知道怎么做事和做人，因为这并不像写代码，虽然复杂，但是终归是有固定的逻辑的．</p>
+<a id="more"></a>
+<p>以下是我16年进步清单#(-)_(-)#:</p>
+<ol>
+<li>坚持学习英语，背单词，哪怕每天50个;</li>
+<li>重新学习了javaScript ;</li>
+<li>学习node.js/express等web框架/npm包管理工具/模板引擎/认识了mongodb非关系型数据库;</li>
+<li>过度到Arch下工作包括日常使用,学习到了更多的linux知识,学会了如何通过Wiki解决问题;</li>
+<li>搭建了属于自己的<a href="https://egene-huang.github.io">博客</a> ;</li>
+<li>学习并使用持续集成工具[Jenkins]自动部署公司项目代码 ;</li>
+<li>大概的知道了如何更好的与人交流,还需要多向别人学习;</li>
+</ol>
+<p>在这一年，我就像是刚进入幼儿园的小朋友一样，感觉一切都是新鲜的，学会就会觉得自己很了不起，但是每每想起自己年龄的时候就像是被人扔进并窟窿里．所以，我经常感叹我之前２０多年都TM干嘛去了，白活了，很多人劝我往前看，其实我怎会不懂呢，只是我真的不甘心，上天给我和其他同样的时间搬砖，谁搬得多谁就能得到更多的报酬，但是人家都来来回回搬了很多次了，我ＴＭＤ还在原地傻呵呵的玩儿泥巴.想想就可气!！　</p>
+<p>但是也只是气气自己,时刻警告自己跟别人差距有多大，我要更多的努力才行．以后要学习的东西，就眼前的还有很多，对我来说尽可能的不浪费时间很重要，继续前行，不管前面是狂风还是暴雨，请不再逃避!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2016结束啦，　回想这一年，我自己能感觉到自己的进步，我自己还是很为自己高兴的，因为我相比之前确实成长了．口头表扬下我自己，~(#_#)~ 我也发现了自己很多的毛病，长期的自闭，导致自己不善于交流，甚至变得有些严重的玻璃心，不知道怎么去跟人相处，不知道怎么做事和做人，因为这并不像写代码，虽然复杂，但是终归是有固定的逻辑的．&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="年终总结" scheme="https://egene-huang.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令整理</title>
+    <link href="https://egene-huang.github.io/2016/12/27/linux-command/"/>
+    <id>https://egene-huang.github.io/2016/12/27/linux-command/</id>
+    <published>2016-12-27T02:51:37.000Z</published>
+    <updated>2016-12-30T14:21:52.882Z</updated>
+    
+    <content type="html"><![CDATA[<p> 整理工作中常用的linux命令, 方便查询, 也算是总结, 利人利己, 虽然不是专业运维,工作中也时常需要临时充当一下运维的角色, 所以记录一下,  这里面可能会包含 <code>arch</code> 的一些特殊命令, 不过会有特殊标记.</p>
+<a id="more"></a>
+<h3 id="Linux-常用命令整理"><a href="#Linux-常用命令整理" class="headerlink" title="Linux 常用命令整理"></a>Linux 常用命令整理</h3><h4 id="新建目录"><a href="#新建目录" class="headerlink" title="新建目录"></a>新建目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir dir</div></pre></td></tr></table></figure>
+<h4 id="新建多级目录"><a href="#新建多级目录" class="headerlink" title="新建多级目录"></a>新建多级目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p dir/xxx</div></pre></td></tr></table></figure>
+<h4 id="新建多个目录"><a href="#新建多个目录" class="headerlink" title="新建多个目录"></a>新建多个目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir &#123;d1,d2&#125;</div></pre></td></tr></table></figure>
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm f1</div></pre></td></tr></table></figure>
+<h4 id="强制删除文件-无提示"><a href="#强制删除文件-无提示" class="headerlink" title="强制删除文件[无提示]"></a>强制删除文件[无提示]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf f1</div></pre></td></tr></table></figure>
+<h4 id="删除目录"><a href="#删除目录" class="headerlink" title="删除目录"></a>删除目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -r dir/</div></pre></td></tr></table></figure>
+<h4 id="删除多个目录"><a href="#删除多个目录" class="headerlink" title="删除多个目录"></a>删除多个目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -r &#123;dir1, dir2&#125;</div></pre></td></tr></table></figure>
+<h4 id="ssh登录远程主机"><a href="#ssh登录远程主机" class="headerlink" title="ssh登录远程主机"></a>ssh登录远程主机</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh user@host</div></pre></td></tr></table></figure>
+<h4 id="ssh登录远程主机-指定端口号"><a href="#ssh登录远程主机-指定端口号" class="headerlink" title="ssh登录远程主机[指定端口号]"></a>ssh登录远程主机[<em>指定端口号</em>]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh user@host -p port</div></pre></td></tr></table></figure>
+<h4 id="本地复制文件"><a href="#本地复制文件" class="headerlink" title="本地复制文件"></a>本地复制文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp cpfile /targetpath/xx/</div></pre></td></tr></table></figure>
+<h4 id="本地复制文件夹"><a href="#本地复制文件夹" class="headerlink" title="本地复制文件夹"></a>本地复制文件夹</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -r cpdir /targetpath/xxx</div></pre></td></tr></table></figure>
+<h4 id="本地上传文件到远程主机"><a href="#本地上传文件到远程主机" class="headerlink" title="本地上传文件到远程主机"></a>本地上传文件到远程主机</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp localfile user@host:/targetpath/</div></pre></td></tr></table></figure>
+<h4 id="本地上传文件到远程主机-指定端口访问"><a href="#本地上传文件到远程主机-指定端口访问" class="headerlink" title="本地上传文件到远程主机[指定端口访问]"></a>本地上传文件到远程主机[<em>指定端口访问</em>]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -P port localfile user@host:/targetpath/</div></pre></td></tr></table></figure>
+<h4 id="本地上传文件夹到远程主机-指定端口访问"><a href="#本地上传文件夹到远程主机-指定端口访问" class="headerlink" title="本地上传文件夹到远程主机[指定端口访问]"></a>本地上传文件夹到远程主机[<em>指定端口访问</em>]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -P port -r localdir user@host:/targetpath/</div></pre></td></tr></table></figure>
+<p>—- END 以后用到了再补充</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 整理工作中常用的linux命令, 方便查询, 也算是总结, 利人利己, 虽然不是专业运维,工作中也时常需要临时充当一下运维的角色, 所以记录一下,  这里面可能会包含 &lt;code&gt;arch&lt;/code&gt; 的一些特殊命令, 不过会有特殊标记.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="https://egene-huang.github.io/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://egene-huang.github.io/tags/linux/"/>
+    
+      <category term="arch" scheme="https://egene-huang.github.io/tags/arch/"/>
+    
+  </entry>
   
   <entry>
     <title>接java基础</title>
