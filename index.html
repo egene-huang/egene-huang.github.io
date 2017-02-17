@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="palm.strive'blog" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="palm.strive" type="application/atom+xml" />
 
 
 
@@ -86,12 +86,12 @@
 
 <meta name="description" content="A single idea from the human mind can build cities. An idea can transform the world and rewrite all the rules.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="palm.strive'blog">
+<meta property="og:title" content="palm.strive">
 <meta property="og:url" content="https://egene-huang.github.io/index.html">
-<meta property="og:site_name" content="palm.strive'blog">
+<meta property="og:site_name" content="palm.strive">
 <meta property="og:description" content="A single idea from the human mind can build cities. An idea can transform the world and rewrite all the rules.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="palm.strive'blog">
+<meta name="twitter:title" content="palm.strive">
 <meta name="twitter:description" content="A single idea from the human mind can build cities. An idea can transform the world and rewrite all the rules.">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title> palm.strive'blog </title>
+  <title> palm.strive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -159,7 +159,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">palm.strive'blog</span>
+      <span class="site-title">palm.strive</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -249,6 +249,594 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/02/14/arch-TrackPoint-TouchPad/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/14/arch-TrackPoint-TouchPad/" itemprop="url">
+                  arch中小红点／触摸板驱动调整
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-14T08:54:00+08:00">
+                2017-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/14/arch-TrackPoint-TouchPad/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/14/arch-TrackPoint-TouchPad/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>  在Arch中，小红点(TrackPoint)支持驱动有两个 – <a href="https://www.archlinux.org/packages/?name=xf86-input-evdev">xf86-input-evdev</a> 和 <a href="https://www.archlinux.org/packages/?name=xf86-input-libinput">xf86-input-libinput</a> 都支持它。evdev是 Xorg 的默认驱动。从<a href="https://www.archlinux.org/">2017-01-14</a>起，xf86-input-libinput作为默认驱动，但是依然支持synaptics, evdev驱动配置．　如果因为升级导致支持驱动自动变为libinput，则可以重新安装evdev驱动然后调整配置文件还原回来．我就是这样的，因为，我考虑到毕竟libinput刚出来可能不是很稳定，再者，之前都是针对evdev的配置，所以不想又挨个儿修改配置,于是继续使用evden作为小红点的配置．<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/14/arch-TrackPoint-TouchPad/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/01/07/sping-frame2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/07/sping-frame2/" itemprop="url">
+                  Spring Data 框架整合2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T17:43:07+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/07/sping-frame2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/sping-frame2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>继续 Spring Data 框架整合:<br>将上述依赖jar下载到本地 maven仓库后,配置 <code>Spring MVC</code> 容器配置文件, 这里的配置文件名字最好与<code>web.xml</code>配置的<code>spring mvc servlet</code>名字保持一致, 因为框架很多地方是有约定大于规范的.这个配置文件大致包含了两部分:    </p>
+<ul>
+<li>action 视图控制层类自动注入.</li>
+<li>视图解析器配置以及视图文件识别规范      </li>
+</ul>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/07/sping-frame2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/01/07/spring-frame/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/07/spring-frame/" itemprop="url">
+                  Spring Data 框架整合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T16:44:07+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/07/spring-frame/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/spring-frame/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>工作三年, 一直在写java代码,一直也没有自己一个人从无到有的搭建一套java web框架, 因为工作中,也都是别人准备好项目开发环境, 然后我再在上面写代码,平时我也没有正经花时间在上面,java web框架很多, jar相互之间的依赖和冲突也比较厉害, 这些问题纠缠在一起, 让我望而却步. 一直想尝试自己一个人整合一套java web框架然后在上面开发,一次偶然的机会迫使我不得不自己动手搭建一套可以快速开发的java web框架, 借这次机会我准备使用 <code>Spring MVC + Spring Data JPA</code> 开发web应用.  不出意外,其过程虽然不是很顺利,不过最终总算是不负众望,已经可以投入使用, 其实这里面需要配置的不是很多,更多的时候jar版本的选择比较麻烦.</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/07/spring-frame/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/01/06/git-learn/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/06/git-learn/" itemprop="url">
+                  git-学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T23:48:59+08:00">
+                2017-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/06/git-learn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/06/git-learn/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在java开发过程中,不出意外大家都会使用各种IDE(集成开发环境)搭建项目然后进行开发, 各种IDE为了更好的管理当前项目,让开发人员更高效的开发,都会针对当前项目生成一些类似索引或者项目配置的文件或者目录. 例如 <a href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a> 会生成 <code>.idea</code> 目录用来管理整个<code>project</code>,和<code>.iml</code> 文件用来管理当前 <code>Module</code>.</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/06/git-learn/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/01/01/growing-year/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,9 +846,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -386,9 +974,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -532,9 +1120,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -678,9 +1266,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -824,9 +1412,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -971,9 +1559,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
+    <meta itemprop="name" content="palm.strive">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
     </span>
   </span>
 
@@ -1099,393 +1687,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2016/11/16/hexo-hello/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="egene-huang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/hexo-hello/" itemprop="url">
-                  Hello Hexo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-16T19:25:24+08:00">
-                2016-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/11/16/hexo-hello/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/hexo-hello/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/16/hexo-hello/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2016/11/16/success-text/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="egene-huang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/success-text/" itemprop="url">
-                  Just Do
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-16T14:42:07+08:00">
-                2016-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/11/16/success-text/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/success-text/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<blockquote><p>Do not seek to follow in the footsteps of the men of old; seek what they sought.<br>不要追寻先人的足迹,追寻先人所追寻的吧!</p>
-<footer><strong>Basho</strong></footer></blockquote>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2016/11/15/remove-tracked-file/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="egene-huang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="palm.strive'blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="palm.strive'blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/15/remove-tracked-file/" itemprop="url">
-                  使用.gitignore文件取消某些文件版本控制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-15T22:25:29+08:00">
-                2016-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/11/15/remove-tracked-file/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/15/remove-tracked-file/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>   忽然想把我的博客重新弄一下，然后还想把博客源码备份到github上，于是就开始弄了， 于是一边准备环境一边提交到 <em>github</em> 上，结果就导致了 <code>/public/</code> 、<code>/node_modules/</code>、<code>db.json</code>等这些文件/夹也推送到github上了, 一直只是<code>听说git/github</code> 没有实际使用过(瞬间感觉自己好悲哀呀，路人甲一定这么认为滴-_-#) ，所以刚学习了git/github使用，听说有一个<code>.gitignore</code>文件可以做到忽略指定文件/夹， 让我们<code>git status</code> 不会罗列被忽略的文件。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/15/remove-tracked-file/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1524,7 +1732,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1532,7 +1740,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -1541,7 +1749,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
