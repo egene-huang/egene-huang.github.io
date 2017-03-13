@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git github," />
+  <meta name="keywords" content="hexo,markdown,hexo-renderer-markdown-it," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="在java开发过程中,不出意外大家都会使用各种IDE(集成开发环境)搭建项目然后进行开发, 各种IDE为了更好的管理当前项目,让开发人员更高效的开发,都会针对当前项目生成一些类似索引或者项目配置的文件或者目录. 例如 IntelliJ IDEA 会生成 .idea 目录用来管理整个project,和.iml 文件用来管理当前 Module.">
+<meta name="description" content="使用hexo搭建好博客以来，一直各种折腾，平时记录笔记生成的静态网页的时候总是会不太顺利, 基本上都会话费好长一段时间来排除Markdown标签导致的html代码生成的错误. 好几次都只好把一篇完整的日记拆分为两个. 因为我习惯的那些Markdown标签在hexo默认的Markdown引擎中不能识别，所以不能生成正确的html代码。提供的默认Markdown解析引擎是hexo-renderer-m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git-学习">
-<meta property="og:url" content="https://egene-huang.github.io/2017/01/06/git-learn/index.html">
+<meta property="og:title" content="记一次hexo默认markdown引擎更换">
+<meta property="og:url" content="https://egene-huang.github.io/2017/02/21/hexo-markdown-engine/index.html">
 <meta property="og:site_name" content="palm.strive">
-<meta property="og:description" content="在java开发过程中,不出意外大家都会使用各种IDE(集成开发环境)搭建项目然后进行开发, 各种IDE为了更好的管理当前项目,让开发人员更高效的开发,都会针对当前项目生成一些类似索引或者项目配置的文件或者目录. 例如 IntelliJ IDEA 会生成 .idea 目录用来管理整个project,和.iml 文件用来管理当前 Module.">
-<meta property="og:updated_time" content="2017-02-23T13:47:49.096Z">
+<meta property="og:description" content="使用hexo搭建好博客以来，一直各种折腾，平时记录笔记生成的静态网页的时候总是会不太顺利, 基本上都会话费好长一段时间来排除Markdown标签导致的html代码生成的错误. 好几次都只好把一篇完整的日记拆分为两个. 因为我习惯的那些Markdown标签在hexo默认的Markdown引擎中不能识别，所以不能生成正确的html代码。提供的默认Markdown解析引擎是hexo-renderer-m">
+<meta property="og:updated_time" content="2017-02-21T14:47:49.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git-学习">
-<meta name="twitter:description" content="在java开发过程中,不出意外大家都会使用各种IDE(集成开发环境)搭建项目然后进行开发, 各种IDE为了更好的管理当前项目,让开发人员更高效的开发,都会针对当前项目生成一些类似索引或者项目配置的文件或者目录. 例如 IntelliJ IDEA 会生成 .idea 目录用来管理整个project,和.iml 文件用来管理当前 Module.">
+<meta name="twitter:title" content="记一次hexo默认markdown引擎更换">
+<meta name="twitter:description" content="使用hexo搭建好博客以来，一直各种折腾，平时记录笔记生成的静态网页的时候总是会不太顺利, 基本上都会话费好长一段时间来排除Markdown标签导致的html代码生成的错误. 好几次都只好把一篇完整的日记拆分为两个. 因为我习惯的那些Markdown标签在hexo默认的Markdown引擎中不能识别，所以不能生成正确的html代码。提供的默认Markdown解析引擎是hexo-renderer-m">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://egene-huang.github.io/2017/01/06/git-learn/"/>
+  <link rel="canonical" href="https://egene-huang.github.io/2017/02/21/hexo-markdown-engine/"/>
 
 
 
 
 
-  <title> git-学习 | palm.strive </title>
+  <title> 记一次hexo默认markdown引擎更换 | palm.strive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -248,7 +248,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/01/06/git-learn/">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/02/21/hexo-markdown-engine/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="egene-huang">
@@ -272,7 +272,7 @@
             
             
               
-                git-学习
+                记一次hexo默认markdown引擎更换
               
             
           </h1>
@@ -285,8 +285,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T23:48:59+08:00">
-                2017-01-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-21T21:33:18+08:00">
+                2017-02-21
               </time>
             
 
@@ -304,8 +304,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
                   </a>
                 </span>
 
@@ -319,8 +319,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/01/06/git-learn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/06/git-learn/" itemprop="commentCount"></span>
+                <a href="/2017/02/21/hexo-markdown-engine/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/hexo-markdown-engine/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -346,27 +346,20 @@
       
 
       
-        <p>在java开发过程中,不出意外大家都会使用各种IDE(集成开发环境)搭建项目然后进行开发, 各种IDE为了更好的管理当前项目,让开发人员更高效的开发,都会针对当前项目生成一些类似索引或者项目配置的文件或者目录. 例如 <a href="http://www.jetbrains.com/idea/" target="_blank" rel="external">IntelliJ IDEA</a> 会生成 <code>.idea</code> 目录用来管理整个<code>project</code>,和<code>.iml</code> 文件用来管理当前 <code>Module</code>.</p>
+        <p>使用hexo搭建好博客以来，一直各种折腾，平时记录笔记生成的静态网页的时候总是会不太顺利, 基本上都会话费好长一段时间来排除<code>Markdown</code>标签导致的html代码生成的错误. 好几次都只好把一篇完整的日记拆分为两个. 因为我习惯的那些<code>Markdown</code>标签在<code>hexo</code>默认的<code>Markdown</code>引擎中不能识别，所以不能生成正确的html代码。提供的默认<code>Markdown</code>解析引擎是<code>hexo-renderer-marked</code>.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"hexo-site"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.0"</span>,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"hexo"</span>: &#123;</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"3.2.2"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"hexo"</span>: <span class="string">"^3.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-browsersync"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-deployer-git"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-generator-archive"</span>: <span class="string">"^0.1.4"</span>,</div><div class="line">    <span class="attr">"hexo-generator-category"</span>: <span class="string">"^0.1.3"</span>,</div><div class="line">    <span class="attr">"hexo-generator-feed"</span>: <span class="string">"^1.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-generator-index"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-generator-sitemap"</span>: <span class="string">"^1.1.2"</span>,</div><div class="line">    <span class="attr">"hexo-generator-tag"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-ejs"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-marked"</span>: <span class="string">"^0.2.11"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-jade"</span>: <span class="string">"^0.3.0"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-stylus"</span>: <span class="string">"^0.3.1"</span>,</div><div class="line">    <span class="attr">"hexo-server"</span>: <span class="string">"^0.2.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>marked引擎是最基本的markdown解释引擎，对后来的很多markdown扩展表强支持不是很有好，例如: <code>``` </code>语法</p>
 <a id="more"></a>
-<p>所以 我们在使用<code>git</code>来协作开发的时候并不希望这些文件跟随这版本一起出现在大家的视野中, 不仅仅这些文件或目录开发的web应用没有作用,更重要的是会搞乱大家的工作环境,因为一个项目组完全可能出现两种以上的<code>IDE</code>.<br>所以需要在<code>git</code>版本中过滤这些目录或文件.</p>
-<p>一般,采用<code>git</code>提供方式: 将需要忽略的文件或目录添加到 <code>.gitignore</code>文件中,这时候,使用<code>git</code>命令查看 <code>change list</code>时,被忽略文件则不会出现在待提交列表里. <code>git status</code></p>
-<p><code>.gitignore</code>文件内容类似这样的</p>
-<pre>
-*.iml
-.idea   
-db.json   
-/target/       
-*.log    
-blog/node_modules/    
-blog/public/   
-blog/themes/    
-.deploy*/
-</pre>
-
-<p>如果需要将版本控制内文件或目录添加到该文件内,进而去除该文件或目录的版本跟踪,则需要先将被忽略文件或目录添加到<code>.gitignore</code>后还需要以下步骤:<br>删除cache</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm -r --cached  /ignorepath/</div></pre></td></tr></table></figure>
-<p>提交<code>.gitignore</code>文件<br><code><br>git add .gitignore<br>git commit -m “message”<br></code></p>
-
+<p>我经常需要使用这个标签,因为我经常贴系统配置/编程语言部分代码等,后来在知乎上找到一款marked引擎的替代者<code>hexo-renderer-markdown-it</code></p>
+<!--
+# Markdown-it config
+## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/
+markdown:
+  render:
+    html: true # Doesn't escape HTML content
+    linkify: true # Returns text links as proper links inlined with the paragraph.
+    typographer: true # Substitution of common typographical elements will take place. -->
+<pre><code>&lt;!-- 添加到站点_config.yml 下面 --&gt;
+</code></pre>
       
     </div>
 
@@ -389,7 +382,11 @@ blog/themes/
       
         <div class="post-tags">
           
-            <a href="/tags/git-github/" rel="tag"># git github</a>
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+            <a href="/tags/markdown/" rel="tag"># markdown</a>
+          
+            <a href="/tags/hexo-renderer-markdown-it/" rel="tag"># hexo-renderer-markdown-it</a>
           
         </div>
       
@@ -398,8 +395,8 @@ blog/themes/
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/01/growing-year/" rel="next" title="2016,我成长啦!">
-                <i class="fa fa-chevron-left"></i> 2016,我成长啦!
+              <a href="/2017/02/21/spring-beans-scope/" rel="next" title="spring beans 作用域">
+                <i class="fa fa-chevron-left"></i> spring beans 作用域
               </a>
             
           </div>
@@ -407,10 +404,6 @@ blog/themes/
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/07/spring-frame/" rel="prev" title="Spring Data 框架整合">
-                Spring Data 框架整合 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -436,8 +429,8 @@ blog/themes/
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/06/git-learn/"
-           data-title="git-学习" data-url="https://egene-huang.github.io/2017/01/06/git-learn/">
+      <div class="ds-thread" data-thread-key="2017/02/21/hexo-markdown-engine/"
+           data-title="记一次hexo默认markdown引擎更换" data-url="https://egene-huang.github.io/2017/02/21/hexo-markdown-engine/">
       </div>
     
   </div>

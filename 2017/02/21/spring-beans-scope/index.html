@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="spring,spring beans,java web," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="palm.strive" type="application/atom+xml" />
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一直以为,在spring IOC容器中管理的bean实例的作用域范围都是singleton,今天专门翻看了spring docs才知道,其实发展到spring 3.0以后,在IOC容器中存活的bean支持五种作用域配置:
+
+singleton
+prototype
+request
+session
+global session
+
+后面三种,只能存用于web应用的ApplicationContext.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring beans 作用域">
+<meta property="og:url" content="https://egene-huang.github.io/2017/02/21/spring-beans-scope/index.html">
+<meta property="og:site_name" content="palm.strive">
+<meta property="og:description" content="一直以为,在spring IOC容器中管理的bean实例的作用域范围都是singleton,今天专门翻看了spring docs才知道,其实发展到spring 3.0以后,在IOC容器中存活的bean支持五种作用域配置:
+
+singleton
+prototype
+request
+session
+global session
+
+后面三种,只能存用于web应用的ApplicationContext.">
+<meta property="og:image" content="https://egene-huang.github.io/2017/02/21/spring-beans-scope/singleton.png">
+<meta property="og:image" content="https://egene-huang.github.io/2017/02/21/spring-beans-scope/prototype.png">
+<meta property="og:updated_time" content="2017-02-23T13:47:49.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring beans 作用域">
+<meta name="twitter:description" content="一直以为,在spring IOC容器中管理的bean实例的作用域范围都是singleton,今天专门翻看了spring docs才知道,其实发展到spring 3.0以后,在IOC容器中存活的bean支持五种作用域配置:
+
+singleton
+prototype
+request
+session
+global session
+
+后面三种,只能存用于web应用的ApplicationContext.">
+<meta name="twitter:image" content="https://egene-huang.github.io/2017/02/21/spring-beans-scope/singleton.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://egene-huang.github.io/2017/02/21/spring-beans-scope/"/>
+
+
+
+
+
+  <title> spring beans 作用域 | palm.strive </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">palm.strive</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/egene-huang" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://egene-huang.github.io/2017/02/21/spring-beans-scope/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="egene-huang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/Monkey-D-Luffy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="palm.strive">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="palm.strive" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                spring beans 作用域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-21T10:50:13+08:00">
+                2017-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java-web/" itemprop="url" rel="index">
+                    <span itemprop="name">java web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/21/spring-beans-scope/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/spring-beans-scope/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一直以为,在spring IOC容器中管理的bean实例的作用域范围都是<code>singleton</code>,今天专门翻看了<a href="http://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch04s04.html" target="_blank" rel="external">spring docs</a>才知道,其实发展到<code>spring 3.0</code>以后,在IOC容器中存活的bean支持五种作用域配置:</p>
+<ol>
+<li>singleton</li>
+<li>prototype</li>
+<li>request</li>
+<li>session</li>
+<li>global session</li>
+</ol>
+<p>后面三种,只能存用于web应用的<code>ApplicationContext</code>.</p>
+<a id="more"></a>
+<p>这是从网站抓下来的 Table of Bean scopes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Scope</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">singleton</td>
+<td style="text-align:center">Scopes a single bean definition to a single object instance per Spring IoC container.</td>
+</tr>
+<tr>
+<td style="text-align:center">prototype</td>
+<td style="text-align:center">Scopes a single bean definition to any number of object instances.</td>
+</tr>
+<tr>
+<td style="text-align:center">request</td>
+<td style="text-align:center">Scopes a single bean definition to the lifecycle of a single HTTP request; that is each and every HTTP request will have its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring ApplicationContext.</td>
+</tr>
+<tr>
+<td style="text-align:center">session</td>
+<td style="text-align:center">Scopes a single bean definition to the lifecycle of a HTTP Session. Only valid in the context of a web-aware Spring ApplicationContext.</td>
+</tr>
+<tr>
+<td style="text-align:center">global session</td>
+<td style="text-align:center">Scopes a single bean definition to the lifecycle of a global HTTP Session. Typically only valid when used in a portlet context. Only valid in the context of a web-aware Spring ApplicationContext.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="singleton-scope"><a href="#singleton-scope" class="headerlink" title="singleton scope"></a>singleton scope</h4><p>在spring #IOC容器中管理的bean 作用域默认为 <code>singleton</code>的, 所以我们不需要特别配置,则应用中所有这个对象的引用共享一个对应的实例,一般就是在spring初始化的时候创建的那个实例. 这个实例是在整个spring容器中有且仅有一个,和我们说的单例设计模式是不同的, 在设计模式中,保证在一个classloader中只能存在一个实例.所以,我们有一种利用classloader类加载互斥的特性来实现单例.<br>我觉得<a href="http://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch04s04.html" target="_blank" rel="external">spring docs</a>上描述<code>singleton</code>的图片非常的简洁明了,简单易懂:</p>
+<img src="/2017/02/21/spring-beans-scope/singleton.png" alt="singleton scope" title="singleton scope">
+<p>在上面三个bean中都引用了<code>accountDao</code> 这个bean定义的收作用域是 <code>singleton</code>的,那么在左边三个bean中,<code>accountDao</code>引用共享一个实例.</p>
+<p><code>singleton</code> bean 在<code>applicationContext.xml</code>中,配置类似这样:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.foo.DefaultAccountService"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- the following is equivalent, though redundant (singleton scope is the default); using spring-beans-2.0.dtd --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.foo.DefaultAccountService"</span> <span class="attr">scope</span>=<span class="string">"singleton"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- the following is equivalent and preserved for backward compatibility in spring-beans.dtd --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.foo.DefaultAccountService"</span> <span class="attr">singleton</span>=<span class="string">"true"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上面三种方式配置效果是等同的, 第一种为我们常见的配置,因为默认为<code>singleton</code>作用域.    </p>
+<h4 id="prototype-scope"><a href="#prototype-scope" class="headerlink" title="prototype scope"></a>prototype scope</h4><p><code>prototype scope</code>和<code>singleton scope</code>的区别就是在产生多个实例上,在这个作用域范围,每个实例引用都拥有自己的实例,不和其他引用共享实例, 在每次请求这个bean在容器内注入或者使用<code>getBean()</code>方法得到这个bean的时候都会得到一个新的实例. 如下这种情况推荐使用<code>prototype scope</code> :</p>
+<blockquote>
+<p>容器内对象拥有自己的状态,各个实例引用持有者的对象状态不同,例如,报价服务对象,可以给不同产品报价,然后内部需要维护报价产品的部分信息.    </p>
+</blockquote>
+<p>在<code>xml</code>中定义 <code>prototype scope</code>bean类似这样:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- using spring-beans-2.0.dtd --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.foo.DefaultAccountService"</span> <span class="attr">scope</span>=<span class="string">"prototype"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- the following is equivalent and preserved for backward compatibility in spring-beans.dtd --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.foo.DefaultAccountService"</span> <span class="attr">singleton</span>=<span class="string">"false"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上面两种定义方式效果是等同的</p>
+<p><a href="http://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch04s04.html" target="_blank" rel="external">spring docs</a>描述图片:<br><img src="/2017/02/21/spring-beans-scope/prototype.png" alt="prototype scope" title="prototype scope"></p>
+<p>图片中左边定义的三个bean都引用了 <code>accountDao</code>,则这三个bean都会拥有自己的实例,这些实例的生命周期需要注意,docs说明如下:</p>
+<blockquote>
+<p>There is one quite important thing to be aware of when deploying a bean in the prototype scope, in that the lifecycle of the bean changes slightly. Spring does not manage the complete lifecycle of a prototype bean: the container instantiates, configures, decorates and otherwise assembles a prototype object, hands it to the client and then has no further knowledge of that prototype instance. This means that while initialization lifecycle callback methods will be called on all objects regardless of scope, in the case of prototypes, any configured destruction lifecycle callbacks will not be called. It is the responsibility of the client code to clean up prototype scoped objects and release any expensive resources that the prototype bean(s) are holding onto. (One possible way to get the Spring container to release resources used by prototype-scoped beans is through the use of a custom bean post-processor which would hold a reference to the beans that need to be cleaned up.)</p>
+<p>In some respects, you can think of the Spring containers role when talking about a prototype-scoped bean as somewhat of a replacement for the Java ‘new’ operator. All lifecycle aspects past that point have to be handled by the client. (The lifecycle of a bean in the Spring container is further described in the section entitled Section 4.5.1, “Lifecycle callbacks”.)     </p>
+</blockquote>
+<h4 id="other-scopes"><a href="#other-scopes" class="headerlink" title="other scopes"></a>other scopes</h4><h5 id="request"><a href="#request" class="headerlink" title="request"></a>request</h5><p>在每次Http请求中,都会重新生成一个实例, 在action中最为常见,因为返回的实例中大多都包含了本次请求的信息, 随着这次请求的结束这些信息也就没有用了,并且不能影响下次的请求,所以这个对象的作用范围只能是本次请求.<br>定义:</p>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"loginAction"</span> <span class="attr">class</span>=<span class="string">"com.foo.LoginAction"</span> <span class="attr">scope</span>=<span class="string">"request"</span>/&gt;</span>
+</code></pre>
+<h5 id="session"><a href="#session" class="headerlink" title="session"></a>session</h5><p>和request类似,如果定义一个bean的作用域为 session则不同的HttpSession中实例不同.<br>定义:<br><code>&lt;bean id=&quot;userPreferences&quot; class=&quot;com.foo.UserPreferences&quot; scope=&quot;session&quot;/&gt;</code><br>在HttpSession中,每个<code>userPreferences</code>引用持有者都修改自己的<code>userPreferences</code>实例,而不会相互影响.</p>
+<h5 id="global-session"><a href="#global-session" class="headerlink" title="global session"></a>global session</h5><p>global session作用域bean定义类似这样:<br><code>&lt;bean id=&quot;userPreferences&quot; class=&quot;com.foo.UserPreferences&quot; scope=&quot;session&quot;/&gt;</code><br>global session有点类似 singleton不过其共享范围是在基于portlet context的各个应用之间.</p>
+<blockquote>
+<p>Please note that if you are writing a standard Servlet-based web application and you define one or more beans as having global session scope, the standard HTTP Session scope will be used, and no error will be raised.    </p>
+</blockquote>
+<p>参考资料:<br>4.4Bean scopes: <a href="http://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch04s04.html" target="_blank" rel="external">http://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch04s04.html</a>)<br>stackoverflow :<a href="http://stackoverflow.com/questions/17599216/spring-bean-scopes" target="_blank" rel="external">http://stackoverflow.com/questions/17599216/spring-bean-scopes</a><br>cnblog: <a href="http://www.cnblogs.com/cxyj/p/3906429.html" target="_blank" rel="external">http://www.cnblogs.com/cxyj/p/3906429.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+            <a href="/tags/spring-beans/" rel="tag"># spring beans</a>
+          
+            <a href="/tags/java-web/" rel="tag"># java web</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/14/arch-TrackPoint-TouchPad/" rel="next" title="arch中小红点／触摸板驱动调整">
+                <i class="fa fa-chevron-left"></i> arch中小红点／触摸板驱动调整
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/21/hexo-markdown-engine/" rel="prev" title="记一次hexo默认markdown引擎更换">
+                记一次hexo默认markdown引擎更换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/21/spring-beans-scope/"
+           data-title="spring beans 作用域" data-url="https://egene-huang.github.io/2017/02/21/spring-beans-scope/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/Monkey-D-Luffy.jpg"
+               alt="egene-huang" />
+          <p class="site-author-name" itemprop="name">egene-huang</p>
+          <p class="site-description motion-element" itemprop="description">A single idea from the human mind can build cities. An idea can transform the world and rewrite all the rules.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#singleton-scope"><span class="nav-number">1.</span> <span class="nav-text">singleton scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prototype-scope"><span class="nav-number">2.</span> <span class="nav-text">prototype scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#other-scopes"><span class="nav-number">3.</span> <span class="nav-text">other scopes</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#request"><span class="nav-number">3.1.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#session"><span class="nav-number">3.2.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#global-session"><span class="nav-number">3.3.</span> <span class="nav-text">global session</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">egene-huang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"egene-huang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
