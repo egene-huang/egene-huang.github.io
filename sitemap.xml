@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://egene-huang.github.io/2017/05/02/maven-learn/</loc>
+    
+    <lastmod>2017-05-02T11:20:16.763Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://egene-huang.github.io/2016/12/27/linux-command/</loc>
     
     <lastmod>2017-03-23T12:27:24.802Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://egene-huang.github.io/2017/02/14/arch-TrackPoint-TouchPad/</loc>
+    
+    <lastmod>2017-02-23T13:47:49.096Z</lastmod>
     
   </url>
   
@@ -17,13 +31,6 @@
   
   <url>
     <loc>https://egene-huang.github.io/2017/02/21/spring-beans-scope/</loc>
-    
-    <lastmod>2017-02-23T13:47:49.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://egene-huang.github.io/2017/02/14/arch-TrackPoint-TouchPad/</loc>
     
     <lastmod>2017-02-23T13:47:49.096Z</lastmod>
     
@@ -86,14 +93,14 @@
   </url>
   
   <url>
-    <loc>https://egene-huang.github.io/2016/11/16/hexo-hello/</loc>
+    <loc>https://egene-huang.github.io/2016/11/15/remove-tracked-file/</loc>
     
     <lastmod>2016-11-16T11:25:24.626Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://egene-huang.github.io/2016/11/15/remove-tracked-file/</loc>
+    <loc>https://egene-huang.github.io/2016/11/16/hexo-hello/</loc>
     
     <lastmod>2016-11-16T11:25:24.626Z</lastmod>
     
